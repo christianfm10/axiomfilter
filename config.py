@@ -22,6 +22,7 @@ class FilterConfig:
     BINANCE_ADDRESS: str = "5tzFkiKscXHK5ZXCGbXZxdw7gTjjD1mBwuoFbhUvuAi9"
     KUCOIN_ADDRESS: str = "BmFdpraQhkiDQE6SnfG5omcA1VwzqfXrwtNYBwWTymy6"
     BYBIT_ADDRESS: str = "iGdFcQoyR2MwbXMHQskhmNsqddZ6rinsipHc4TNSdwu"
+    MEXC_ADDRESS: str = "ASTyfSima4LLAdDgoFGkgqoKowG1LZFDr9fAQrg7iaJZ"
 
     # Developer addresses to filter
     DEV_ADDRESSES: Set[str] | None = None
@@ -47,7 +48,11 @@ class FilterConfig:
             }
 
         if self.FUNDER_ADDRESSES is None:
-            self.FUNDER_ADDRESSES = {self.BINANCE_ADDRESS}
+            self.FUNDER_ADDRESSES = {
+                self.KUCOIN_ADDRESS,
+                self.MEXC_ADDRESS,
+                self.BYBIT_ADDRESS,
+            }
 
     def add_dev_address(self, address: str) -> None:
         """Add a developer address to the filter list"""
